@@ -1,0 +1,44 @@
+syntax = "proto3";
+package sumapi;
+option go_package="sumApi/sumapi/proto";
+
+message SumRequest{
+    int32 num1 = 1;
+    int32 num2 = 2;
+}
+message SumResponse{
+    int32 sum = 1;
+}
+service SumService{
+    rpc GetSum(SumRequest) returns (SumResponse);
+}
+
+message PrimeRequest{
+    int32 num = 1;
+}
+message PrimeResponse{
+    int32 num = 1;
+}
+service PrimeService {
+    rpc GetPrime(PrimeRequest) returns (stream PrimeResponse );
+}
+
+message AvgRequest{
+    int32 num = 1;
+}
+message AvgResponse{
+    int32 num = 1;
+}
+service AvgService{
+    rpc GetAvg(stream AvgRequest) returns (AvgResponse);
+}
+
+message MaxRequest{
+    int32 num = 1;
+}
+message MaxResponse{
+    int32 num = 1;
+}
+service MaxService{
+    rpc GetMax(stream MaxRequest) returns (stream MaxResponse);
+}
